@@ -1,4 +1,4 @@
-## rest-api-contest-template
+## rest-api-contest-demo
 This is a template for for a InterSystems IRIS REST API Contest.
 It has an example of REST API with CRUD actions for a Sample Person peristent class.
 
