@@ -10,6 +10,9 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 <Route Url="/" Method="GET" Call="GetInfo" Cors="true"/>
 <!-- Get all records of Person class -->
 <Route Url="/persons/all" Method="GET" Call="GetAllPersons"/>
+<!-- Delete all records of Person class -->
+<Route Url="/persons/deleteall" Method="GET" Call="DeleteAllRecords"/>
+
 <!-- Swagger specs -->
 <Route Url="/_spec" Method="GET" Call="SwaggerSpec" />
 <!-- GET method to return JSON for a given person id-->
@@ -35,6 +38,16 @@ ClassMethod GetInfo() As %Status
     "version": (version)
   }
   RETURN ..%ProcessResult($$$OK, info)
+}
+
+/// Retreive all the records of Sample.Person
+ClassMethod DeleteAllRecords() As %Status
+{
+    
+    #dim tSC As %Status = $$$OK
+
+    Do ##class(Sample.Person).%KillExtent()
+    Quit tSC
 }
 
 /// Retreive all the records of Sample.Person
